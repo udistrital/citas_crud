@@ -1,0 +1,230 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Cita Médica",
+        "description": "Api para citas médicas dentro del módulo de Salud del proyecto SIBUD",
+        "version": "1.0",
+        "termsOfService": "http://www.udistrital.edu.co/politicas-de-privacidad.pdf",
+        "contact": {
+            "email": "baluist@correo.udistrital.edu.co"
+        },
+        "license": {
+            "name": "BSD-3-Clause",
+            "url": "http://opensource.org/licenses/BSD-3-Clause"
+        }
+    },
+    "basePath": "/Cita",
+    "paths": {
+        "/Cita/": {
+            "get": {
+                "tags": [
+                    "Cita"
+                ],
+                "description": "consulta todos los registros de la tabla Cita",
+                "operationId": "CitaController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Cita"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cita"
+                ],
+                "description": "agregar un registro en la tabla Cita",
+                "operationId": "CitaController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Cuerpo para el contenido de Cita",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Cita"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Cita"
+                    },
+                    "403": {
+                        "description": "Cuerpo Vacío"
+                    }
+                }
+            }
+        },
+        "/Cita/{id}": {
+            "get": {
+                "tags": [
+                    "Cita"
+                ],
+                "description": "consultar un registro de la tabla Cita por su id",
+                "operationId": "CitaController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id a consultar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Cita"
+                        }
+                    },
+                    "403": {
+                        "description": ":id está vacío"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cita"
+                ],
+                "description": "actualizar un registro de la tabla Cita",
+                "operationId": "CitaController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id del registro a actualizar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Cuerpo para el contenido de Cita",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Cita"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Cita"
+                        }
+                    },
+                    "403": {
+                        "description": ":id no es entero"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cita"
+                ],
+                "description": "elimina un registro de la tabla Cita",
+                "operationId": "CitaController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id del registro a eliminar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} borrado exitoso!"
+                    },
+                    "403": {
+                        "description": "Id vacío"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.Cita": {
+            "title": "Cita",
+            "type": "object",
+            "properties": {
+                "Fecha": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Hora": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "IdCita": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdPaciente": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdProfesional": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdSolicitud": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Sede": {
+                    "type": "string"
+                },
+                "TipoServicio": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
