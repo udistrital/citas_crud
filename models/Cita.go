@@ -22,7 +22,7 @@ type Cita struct {
 }
 
 func (t *Cita) TableName() string {
-	return "Cita"
+	return "cita"
 }
 
 func init() {

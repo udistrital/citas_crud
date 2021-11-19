@@ -5,7 +5,7 @@ go 1.17
 require github.com/astaxie/beego v1.12.1
 
 require (
-	github.com/lib/pq v1.0.0
+	github.com/lib/pq v1.10.4
 	github.com/smartystreets/goconvey v1.6.7
 )
 
