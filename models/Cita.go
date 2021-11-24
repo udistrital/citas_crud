@@ -15,7 +15,7 @@ type Cita struct {
 	IdProfesional 	int64	   `orm:"column(id_profesional);type(bigint);null"`
 	IdPaciente 		int64	   `orm:"column(id_paciente);type(bigint);null"`
 	Fecha  			*time.Time `orm:"column(fecha);type(date);null"`
-	Hora			*time.Time `orm:"column(hora);type(time);null"`	
+	Hora			string     `orm:"column(hora);null"`	
 	IdSolicitud     int        `orm:"column(id_solicitud);null"`
 	TipoServicio 	string     `orm:"column(tipo_servicio);null"`
 	Sede 			string     `orm:"column(sede);null"`
