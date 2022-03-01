@@ -17,7 +17,7 @@ type Cita struct {
 	Fecha  			*time.Time `orm:"column(fecha);type(date);null"`
 	Hora			string     `orm:"column(hora);null"`	
 	IdSolicitud     int        `orm:"column(id_solicitud);null"`
-	TipoServicio 	int     `orm:"column(tipo_servicio);null"`
+	TipoServicio 	int     	`orm:"column(tipo_servicio);null"`
 	Sede 			string     `orm:"column(sede);null"`
 }
 
