@@ -19,6 +19,9 @@ type Cita struct {
 	IdSolicitud     int        `orm:"column(id_solicitud);null"`
 	TipoServicio 	int     	`orm:"column(tipo_servicio);null"`
 	Sede 			string     `orm:"column(sede);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *Cita) TableName() string {
