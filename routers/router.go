@@ -15,7 +15,7 @@ import (
 )
 
 func init() {
-	ns := beego.NewNamespace("/Cita",
+	ns := beego.NewNamespace("/v1",
 		beego.NSNamespace("/Cita",
 			beego.NSInclude(
 				&controllers.CitaController{},
